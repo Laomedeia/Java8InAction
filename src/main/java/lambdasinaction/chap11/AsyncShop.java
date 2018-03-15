@@ -30,6 +30,12 @@ public class AsyncShop {
         }).start();
         return futurePrice;
 */
+        /**
+         * supplyAsync方法接受一个生产者(Supplier)作为参数，返回一个CompletableFuture
+         * 对象，该对象完成异步执行后会读取调用生产者方法的返回值。生产者方法会交由ForkJoinPool 池中
+         * 的某个执行线程(Executor)运行，但是你也可以使用supplyAsync方法的重载版本，
+         * 传 递第二个参数指定不同的执行线程执行生产者方法。
+         */
         return CompletableFuture.supplyAsync(() -> calculatePrice(product));
     }
 

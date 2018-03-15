@@ -3,7 +3,9 @@ package lambdasinaction.chap8;
 import java.util.function.Function;
 import java.util.function.UnaryOperator;
 
-
+/**
+ * lambda简化责任链模式
+ */
 public class ChainOfResponsibilityMain {
 
     public static void main(String[] args) {
@@ -13,7 +15,7 @@ public class ChainOfResponsibilityMain {
         String result1 = p1.handle("Aren't labdas really sexy?!!");
         System.out.println(result1);
 
-
+        //UnaryOperator: 一元运算，接受一个T类型参数，输出一个与入参一模一样的值
         UnaryOperator<String> headerProcessing =
                 (String text) -> "From Raoul, Mario and Alan: " + text;
         UnaryOperator<String> spellCheckerProcessing =

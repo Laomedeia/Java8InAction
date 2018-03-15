@@ -2,7 +2,9 @@ package lambdasinaction.chap14;
 
 import java.util.function.DoubleUnaryOperator;
 
-
+/**
+ * 函数的科里化
+ */
 public class Currying {
 
     public static void main(String[] args) {

@@ -21,6 +21,7 @@ public class Sorting {
         // 2
         // [Apple{color='green', weight=30}, Apple{color='green', weight=80}, Apple{color='green', weight=155}]
         inventory.sort(new Comparator<Apple>() {
+            @Override
             public int compare(Apple a1, Apple a2){
                 return a1.getWeight().compareTo(a2.getWeight()); 
         }});
@@ -68,6 +69,7 @@ public class Sorting {
             this.color = color;
         }
 
+        @Override
         public String toString() {
             return "Apple{" +
                    "color='" + color + '\'' +
@@ -77,6 +79,7 @@ public class Sorting {
     }
 
     static class AppleComparator implements Comparator<Apple> {
+        @Override
         public int compare(Apple a1, Apple a2){
             return a1.getWeight().compareTo(a2.getWeight());
         }

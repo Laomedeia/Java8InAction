@@ -1,6 +1,8 @@
 package lambdasinaction.chap8;
 
-
+/**
+ * lambda简化策略模式
+ */
 public class StrategyMain {
 
     public static void main(String[] args) {

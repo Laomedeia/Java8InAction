@@ -57,6 +57,7 @@ public class BuildingStreams {
         IntSupplier fib = new IntSupplier(){
                   private int previous = 0;
                   private int current = 1;
+                  @Override
                   public int getAsInt(){
                       int nextValue = this.previous + this.current;
                       this.previous = this.current;

@@ -30,6 +30,7 @@ public class FilteringApples{
 
 		// [Apple{color='red', weight=120}]
 		List<Apple> redApples2 = filter(inventory, new ApplePredicate() {
+			@Override
 			public boolean test(Apple a){
 				return a.getColor().equals("red"); 
 			}
@@ -117,17 +118,20 @@ public class FilteringApples{
 	}
 
 	static class AppleWeightPredicate implements ApplePredicate{
+		@Override
 		public boolean test(Apple apple){
 			return apple.getWeight() > 150; 
 		}
 	}
 	static class AppleColorPredicate implements ApplePredicate{
+		@Override
 		public boolean test(Apple apple){
 			return "green".equals(apple.getColor());
 		}
 	}
 
 	static class AppleRedAndHeavyPredicate implements ApplePredicate{
+		@Override
 		public boolean test(Apple apple){
 			return "red".equals(apple.getColor()) 
 					&& apple.getWeight() > 150; 

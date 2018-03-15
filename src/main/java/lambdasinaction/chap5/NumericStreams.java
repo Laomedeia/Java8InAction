@@ -6,6 +6,9 @@ import java.util.*;
 
 import static lambdasinaction.chap4.Dish.menu;
 
+/**
+ * 数值流 （原始类型流特化）
+ */
 public class NumericStreams{
 
     public static void main(String...args){
@@ -18,6 +21,9 @@ public class NumericStreams{
                            .sum();
         System.out.println("Number of calories:" + calories);
 
+        //boxed(将数值流转回为Stream)
+        //IntStream intStream = menu.stream().mapToInt(Dish::getCalories);
+        //Stream<Integer> stream = intStream.boxed();
 
         // max and OptionalInt
         OptionalInt maxCalories = menu.stream()                                                      

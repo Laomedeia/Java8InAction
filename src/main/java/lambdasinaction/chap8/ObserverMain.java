@@ -3,7 +3,9 @@ package lambdasinaction.chap8;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * 传统观察者模式和lambda简化对比
+ */
 public class ObserverMain {
 
     public static void main(String[] args) {

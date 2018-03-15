@@ -2,7 +2,9 @@ package lambdasinaction.chap13;
 
 import java.util.stream.LongStream;
 
-
+/**
+ * 多种方式递归求阶乘
+ */
 public class Recursion {
 
     public static void main(String[] args) {

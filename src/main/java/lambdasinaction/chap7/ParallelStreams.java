@@ -2,6 +2,10 @@ package lambdasinaction.chap7;
 
 import java.util.stream.*;
 
+/**
+ * 并行流.并行流内部使用了默认的ForkJoinPool(7.2节会进一步讲到分支/合并框架)，它默认的 线程数量就是你的处理器数量，
+ * 这个值是由Runtime.getRuntime().available- Processors()得到的
+ */
 public class ParallelStreams {
 
     public static long iterativeSum(long n) {
@@ -42,7 +46,6 @@ public class ParallelStreams {
 
     public static class Accumulator {
         private long total = 0;
-
         public void add(long value) {
             total += value;
         }

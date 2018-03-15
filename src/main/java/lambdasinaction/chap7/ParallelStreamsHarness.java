@@ -1,7 +1,10 @@
 package lambdasinaction.chap7;
 
+import java.util.Arrays;
 import java.util.concurrent.*;
 import java.util.function.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class ParallelStreamsHarness {
 
@@ -16,6 +19,7 @@ public class ParallelStreamsHarness {
         System.out.println("ForkJoin sum done in: " + measurePerf(ForkJoinSumCalculator::forkJoinSum, 10_000_000L) + " msecs" );
         System.out.println("SideEffect sum done in: " + measurePerf(ParallelStreams::sideEffectSum, 10_000_000L) + " msecs" );
         System.out.println("SideEffect prallel sum done in: " + measurePerf(ParallelStreams::sideEffectParallelSum, 10_000_000L) + " msecs" );
+
     }
 
     public static <T, R> long measurePerf(Function<T, R> f, T input) {

@@ -21,9 +21,11 @@ public class Reducing {
     }
 
     private static int calculateTotalCaloriesWithoutCollectors() {
+        // 直接get()不会有影响，因为menu流不为空
         return menu.stream().map(Dish::getCalories).reduce(Integer::sum).get();
     }
 
+    // 性能最好的使用，避免了自动拆箱(Integer->int)的操作
     private static int calculateTotalCaloriesUsingSum() {
         return menu.stream().mapToInt(Dish::getCalories).sum();
     }

@@ -2,6 +2,7 @@ package lambdasinaction.chap1;
 
 import java.util.*;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class FilteringApples{
 
@@ -28,9 +29,14 @@ public class FilteringApples{
         System.out.println(heavyApples2);
         
         // []
-        List<Apple> weirdApples = filterApples(inventory, (Apple a) -> a.getWeight() < 80 || 
+        List<Apple> weirdApples = filterApples(inventory, (Apple a) -> a.getWeight() < 80 ||
                                                                        "brown".equals(a.getColor()));
         System.out.println(weirdApples);
+
+        // my test used stream/parallelStream
+        List<Apple> collect = inventory.stream().filter(apple -> "green".equals(apple.color)).collect(Collectors.toList());
+        System.out.println(collect);
+
     }
 
     public static List<Apple> filterGreenApples(List<Apple> inventory){
@@ -96,6 +102,7 @@ public class FilteringApples{
             this.color = color;
         }
 
+        @Override
         public String toString() {
             return "Apple{" +
                    "color='" + color + '\'' +

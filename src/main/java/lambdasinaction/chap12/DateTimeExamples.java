@@ -32,9 +32,9 @@ public class DateTimeExamples {
     };
 
     public static void main(String[] args) {
-        useOldDate();
-        useLocalDate();
-        useTemporalAdjuster();
+        //useOldDate();
+        //useLocalDate();
+        //useTemporalAdjuster();
         useDateFormatter();
     }
 
@@ -58,7 +58,7 @@ public class DateTimeExamples {
         int len = date.lengthOfMonth(); // 31 (days in March)
         boolean leap = date.isLeapYear(); // false (not a leap year)
         System.out.println(date);
-
+        System.out.println(LocalDate.now());
         int y = date.get(ChronoField.YEAR);
         int m = date.get(ChronoField.MONTH_OF_YEAR);
         int d = date.get(ChronoField.DAY_OF_MONTH);
@@ -69,6 +69,7 @@ public class DateTimeExamples {
         int second = time.getSecond(); // 20
         System.out.println(time);
 
+        System.out.println(LocalDateTime.now());
         LocalDateTime dt1 = LocalDateTime.of(2014, Month.MARCH, 18, 13, 45, 20); // 2014-03-18T13:45
         LocalDateTime dt2 = LocalDateTime.of(date, time);
         LocalDateTime dt3 = date.atTime(13, 45, 20);
@@ -83,7 +84,7 @@ public class DateTimeExamples {
 
         Instant instant = Instant.ofEpochSecond(44 * 365 * 86400);
         Instant now = Instant.now();
-
+        System.out.println(now);
         Duration d1 = Duration.between(LocalTime.of(13, 45, 10), time);
         Duration d2 = Duration.between(instant, now);
         System.out.println(d1.getSeconds());
