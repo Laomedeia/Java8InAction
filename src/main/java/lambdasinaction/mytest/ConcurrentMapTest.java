@@ -17,5 +17,6 @@ public class ConcurrentMapTest {
                 Optional.of(map.reduceValues(1, Integer::max));
         maxValue.ifPresent(System.out::println);
         System.out.println(map.mappingCount());     //尽量用mappingCount而不是size来计数
+
     }
 }

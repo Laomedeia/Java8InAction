@@ -67,10 +67,15 @@ public class Optional2 {
     }
 
     private static void test1() {
-        Optional.of(new Outer())
+//        Optional.of(new Outer())
+        Outer outer = null; //new Outer();
+        String output = Optional.ofNullable(outer)
                 .flatMap(o -> Optional.ofNullable(o.nested))
                 .flatMap(n -> Optional.ofNullable(n.inner))
                 .flatMap(i -> Optional.ofNullable(i.foo))
-                .ifPresent(System.out::println);
+                // .ifPresent(System.out::println);
+                .orElse("coo");
+        System.out.println(output);
+
     }
 }

@@ -1,13 +1,11 @@
 package com.winterbe.java8.samples.time;
 
-import java.time.DayOfWeek;
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.Month;
-import java.time.ZoneId;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.time.temporal.ChronoField;
 import java.util.Date;
+import java.util.Locale;
 
 /**
  * @author Benjamin Winterberg
@@ -15,7 +13,11 @@ import java.util.Date;
 public class LocalDateTime1 {
 
     public static void main(String[] args) {
-
+//        LocalDate nowDate = LocalDate.now();
+//        LocalTime nowTime = LocalTime.now();
+//        System.out.println(nowDate+" "+nowTime.format( DateTimeFormatter.ofPattern("HH:mm:ss")));
+        LocalDateTime nowDateTime = LocalDateTime.now();
+        System.out.println(nowDateTime.format( DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
         LocalDateTime sylvester = LocalDateTime.of(2014, Month.DECEMBER, 31, 23, 59, 59);
 
         DayOfWeek dayOfWeek = sylvester.getDayOfWeek();
@@ -30,7 +32,7 @@ public class LocalDateTime1 {
         Instant instant = sylvester
                 .atZone(ZoneId.systemDefault())
                 .toInstant();
-
+        System.out.println("Instant:" + instant);
         Date legacyDate = Date.from(instant);
         System.out.println(legacyDate);     // Wed Dec 31 23:59:59 CET 2014
 
