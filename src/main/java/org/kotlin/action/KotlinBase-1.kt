@@ -73,6 +73,7 @@ fun loopMap() {
 
 // 迭代list
 fun loopList() {
+    //如果是set，用setOf
     val list = arrayListOf<String>("aaa","bbb","ccc")
     // 迭代集合是使用下标 withIndex
     for ((index, value) in list.withIndex()) {
