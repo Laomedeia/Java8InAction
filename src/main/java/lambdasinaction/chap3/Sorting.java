@@ -1,5 +1,6 @@
 package lambdasinaction.chap3;
 
+import java.time.LocalDateTime;
 import java.util.*;
 import static java.util.Comparator.comparing;
 
@@ -34,14 +35,15 @@ public class Sorting {
         // [Apple{color='red', weight=20}, Apple{color='green', weight=30}, Apple{color='green', weight=155}]
         inventory.sort((a1, a2) -> a1.getWeight().compareTo(a2.getWeight()));
         System.out.println(inventory);
-        
         // reshuffling things a little
         inventory.set(1, new Apple(10, "red"));
         
         // 4
         // [Apple{color='red', weight=10}, Apple{color='red', weight=20}, Apple{color='green', weight=155}]
         inventory.sort(comparing(Apple::getWeight));
-        System.out.println(inventory);       
+        System.out.println(inventory);
+        System.out.println("compare date:");
+        System.out.println(LocalDateTime.now().compareTo(LocalDateTime.now().plusHours(1)));
     }
 
     public static class Apple {
