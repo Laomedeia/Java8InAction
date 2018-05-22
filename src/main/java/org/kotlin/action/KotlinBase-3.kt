@@ -1,6 +1,10 @@
 @file:JvmName("RenameKtFileClass")   //重命名生成的类名
 package org.kotlin.action
 
+import autoshortidlib.NanoIdUtils
+import java.security.SecureRandom
+
+
 /**
  * 函数与集合
  */
@@ -40,4 +44,10 @@ fun main(args: Array<String>) {
     println("Kotlin".lastChar())
     println(listOf(1,2,3).joinToString("@"))
     println(numberName.second)
+//    println("auto generate short id:"+ShortId.generate())
+    val random = SecureRandom()
+    val alphabet = charArrayOf('0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z')
+    val size = 6
+    println("auto generate short id:"+NanoIdUtils.randomNanoId(random,alphabet,size))
+
 }
