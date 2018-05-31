@@ -1,8 +1,17 @@
 @file:JvmName("RenameKtFileClass")   //重命名生成的类名
 package org.kotlin.action
 
+import autoshortidlib.EncoderHandler
 import autoshortidlib.NanoIdUtils
+import autoshortidlib.ShareCodeUtil
+import autoshortidlib.ShareCodeUtil2
+import java.security.MessageDigest
 import java.security.SecureRandom
+import java.util.*
+import kotlin.collections.HashMap
+import java.text.SimpleDateFormat
+
+
 
 
 /**
@@ -34,6 +43,24 @@ fun <T> Collection<T>.joinToString(separator:String = "", prefix:String = "", su
     result.append(suffix)
     return result.toString()
 }
+// loop query shortid
+fun testLoopShortids() {
+    val random = SecureRandom()
+    val alphabet = charArrayOf('0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z')
+    val size = 6
+    var set = hashSetOf<String>()
+    for (i in 1..10000000) {
+//        var randomNanoId = NanoIdUtils.randomNanoId(random, alphabet, size)
+//        var randomNanoId = ShareCodeUtil.idToCode(i.toLong(), 33554432L)
+//        var randomNanoId = EncoderHandler.encode("SHA1", time).substring(0,6)
+        var randomNanoId = ShareCodeUtil2.toSerialCode(i.toLong())
+//        println(randomNanoId)
+        set.add(randomNanoId)
+        //println("auto generate short id:"+NanoIdUtils.randomNanoId(random,alphabet,size))
+    }
+    println("set size:"+set.size)
+}
+
 
 
 fun main(args: Array<String>) {
@@ -43,11 +70,8 @@ fun main(args: Array<String>) {
     println(UNIX_LINE_SEPARATOR)
     println("Kotlin".lastChar())
     println(listOf(1,2,3).joinToString("@"))
-    println(numberName.second)
+    println(numberName.first)
 //    println("auto generate short id:"+ShortId.generate())
-    val random = SecureRandom()
-    val alphabet = charArrayOf('0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z')
-    val size = 6
-    println("auto generate short id:"+NanoIdUtils.randomNanoId(random,alphabet,size))
+    testLoopShortids()
 
 }
