@@ -1,5 +1,6 @@
 package autoshortidlib;
 
+import java.util.Random;
 import java.util.zip.CRC32;
 
 /**
@@ -19,5 +20,12 @@ public class DeviceIdUtil {
 	            long tmp = crc32.getValue();
 	            return tmp;
    }
+
+	public static void main(String[] args) {
+		Random rd = new Random();
+		String randomStr = "randomStr:" + ( 10 + rd.nextInt(10) ) ;
+		System.out.println(randomStr);
+		System.out.println(DeviceIdUtil.getCRC32(randomStr));
+	}
 
 }

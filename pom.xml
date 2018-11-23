@@ -11,7 +11,7 @@
     <properties>
       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
       <guava.version>17.0</guava.version>
-        <kotlin.version>1.2.30</kotlin.version>
+      <kotlin.version>1.2.30</kotlin.version>
     </properties>
 
   <dependencies>
@@ -46,6 +46,49 @@
           <artifactId>kotlin-test</artifactId>
           <version>${kotlin.version}</version>
           <scope>test</scope>
+      </dependency>
+      <!-- commons-io -->
+      <dependency>
+          <groupId>commons-io</groupId>
+          <artifactId>commons-io</artifactId>
+          <version>2.6</version>
+      </dependency>
+      <!-- commons-lang3 -->
+      <dependency>
+          <groupId>org.apache.commons</groupId>
+          <artifactId>commons-lang3</artifactId>
+          <version>3.8</version>
+      </dependency>
+      <!-- commons-collections4 -->
+      <dependency>
+          <groupId>org.apache.commons</groupId>
+          <artifactId>commons-collections4</artifactId>
+          <version>4.2</version>
+      </dependency>
+      <!-- net.jodah/expiringmap -->
+      <dependency>
+          <groupId>net.jodah</groupId>
+          <artifactId>expiringmap</artifactId>
+          <version>0.5.8</version>
+      </dependency>
+      <!-- lombok -->
+      <dependency>
+          <groupId>org.projectlombok</groupId>
+          <artifactId>lombok</artifactId>
+          <version>1.18.2</version>
+          <scope>provided</scope>
+      </dependency>
+      <!-- fastjson -->
+      <dependency>
+          <groupId>com.alibaba</groupId>
+          <artifactId>fastjson</artifactId>
+          <version>1.2.51</version>
+      </dependency>
+      <!-- netty -->
+      <dependency>
+          <groupId>io.netty</groupId>
+          <artifactId>netty-all</artifactId>
+          <version>4.1.6.Final</version>
       </dependency>
   </dependencies>
 

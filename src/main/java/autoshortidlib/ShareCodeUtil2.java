@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.Random;
 
 /**
+ * 生成六位随机id字符串
  * @author neptune
  * @create 2018 05 23 下午12:05
  */
