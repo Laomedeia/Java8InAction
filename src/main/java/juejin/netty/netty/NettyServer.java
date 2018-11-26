@@ -8,6 +8,7 @@ import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.timeout.IdleStateHandler;
 import io.netty.util.AttributeKey;
@@ -15,8 +16,7 @@ import io.netty.util.concurrent.Future;
 import io.netty.util.concurrent.GenericFutureListener;
 import juejin.netty.netty.codec.PacketDecoder;
 import juejin.netty.netty.codec.PacketEncoder;
-import juejin.netty.netty.handler.LoginRequestHandler;
-import juejin.netty.netty.handler.MessageRequestHandler;
+import juejin.netty.netty.handler.*;
 
 /**
  * @author neptune
@@ -26,21 +26,22 @@ public class NettyServer {
 
     /**
      * 查找端口并绑定
+     *
      * @param serverBootstrap
      * @param port
      */
     private static void bind(final ServerBootstrap serverBootstrap, final int port) {
-            serverBootstrap.bind(port).addListener(new GenericFutureListener<Future<? super Void>>() {
-                @Override
-                public void operationComplete(Future<? super Void> future) {
-                    if (future.isSuccess()) {
-                        System.out.println("端口[" + port + "]绑定成功!");
-                    } else {
-                        System.err.println("端口[" + port + "]绑定失败!");
-                        bind(serverBootstrap, port + 1);
-                    }
+        serverBootstrap.bind(port).addListener(new GenericFutureListener<Future<? super Void>>() {
+            @Override
+            public void operationComplete(Future<? super Void> future) {
+                if (future.isSuccess()) {
+                    System.out.println("端口[" + port + "]绑定成功!");
+                } else {
+                    System.err.println("端口[" + port + "]绑定失败!");
+                    bind(serverBootstrap, port + 1);
                 }
-            });
+            }
+        });
     }
 
     public static void main(String[] args) {
@@ -59,10 +60,13 @@ public class NettyServer {
                 .childHandler(new ChannelInitializer<NioSocketChannel>() {
                     @Override
                     protected void initChannel(NioSocketChannel ch) {
+//                        ch.pipeline().addLast(new LifeCyCleTestHandler());
                         ch.pipeline().addLast(new IdleStateHandler(10, 0, 0));
+                        ch.pipeline().addLast(new MyProtocolDecoder());   // 自定义netty的拆包粘包。使用基于长度域拆包器 LengthFieldBasedFrameDecoder 来拆解我们的自定义协议（第一个参数指的是数据包的最大长度，第二个参数指的是长度域的偏移量，第三个参数指的是长度域的长度）
                         ch.pipeline().addLast(new PacketDecoder());
                         ch.pipeline().addLast(new LoginRequestHandler());
-                        ch.pipeline().addLast(new MessageRequestHandler());
+                        ch.pipeline().addLast(new AuthHandler());
+                        ch.pipeline().addLast(new MessageToUserRequestHandler());
                         ch.pipeline().addLast(new PacketEncoder());
 
 //                        ch.pipeline().addLast(new ServerHandler());
@@ -75,6 +79,6 @@ public class NettyServer {
 //                        });
                     }
                 });
-        bind(serverBootstrap, 1000);
+        bind(serverBootstrap, 8600);
     }
 }

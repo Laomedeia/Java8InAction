@@ -7,6 +7,8 @@ import juejin.netty.netty.protocol.LoginRequestPacket;
 import juejin.netty.netty.protocol.LoginResponsePacket;
 import juejin.netty.netty.protocol.LoginUtil;
 import juejin.netty.netty.protocol.PacketCodeC;
+import juejin.netty.netty.session.SessionUtil;
+import juejin.netty.netty.session.UserSession;
 
 import java.util.Date;
 import java.util.UUID;
@@ -24,9 +26,17 @@ public class LoginRequestHandler extends SimpleChannelInboundHandler<LoginReques
 
         LoginResponsePacket loginResponsePacket = new LoginResponsePacket();
         loginResponsePacket.setVersion(loginRequestPacket.getVersion());
+        loginResponsePacket.setUserName(loginRequestPacket.getUserName());
+
         if (valid(loginRequestPacket)) {
             loginResponsePacket.setSuccess(true);
-            System.out.println(new Date() + ": 登录成功!");
+            String userId = randomUserId();
+            // 添加登录成功标志
+//            LoginUtil.markAsLogin(ctx.channel());
+//            System.out.println(new Date() + ": 登录成功!");
+            loginResponsePacket.setUserId(userId);
+            System.out.println("[" + loginRequestPacket.getUserName() + "]登录成功");
+            SessionUtil.bindSession(new UserSession(userId, loginRequestPacket.getUserName()), ctx.channel());
         } else {
             loginResponsePacket.setReason("账号密码校验失败");
             loginResponsePacket.setSuccess(false);
@@ -35,6 +45,15 @@ public class LoginRequestHandler extends SimpleChannelInboundHandler<LoginReques
 
         // 登录响应
         ctx.channel().writeAndFlush(loginResponsePacket);
+    }
+
+    private static String randomUserId() {
+        return UUID.randomUUID().toString().split("-")[0];
+    }
+
+    @Override
+    public void channelInactive(ChannelHandlerContext ctx) throws Exception {
+        SessionUtil.unBindSession(ctx.channel());
     }
 
     private boolean valid(LoginRequestPacket loginRequestPacket) {

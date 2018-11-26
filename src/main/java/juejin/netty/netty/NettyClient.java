@@ -6,6 +6,7 @@ import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 import io.netty.handler.timeout.IdleStateHandler;
 import io.netty.util.AttributeKey;
@@ -13,9 +14,8 @@ import juejin.netty.netty.codec.PacketDecoder;
 import juejin.netty.netty.codec.PacketEncoder;
 import juejin.netty.netty.handler.LoginResponseHandler;
 import juejin.netty.netty.handler.MessageResponseHandler;
-import juejin.netty.netty.protocol.LoginUtil;
-import juejin.netty.netty.protocol.MessageRequestPacket;
-import juejin.netty.netty.protocol.PacketCodeC;
+import juejin.netty.netty.protocol.*;
+import juejin.netty.netty.session.SessionUtil;
 
 import java.util.Date;
 import java.util.Scanner;
@@ -29,11 +29,12 @@ public class NettyClient {
 
     private Channel channel;
     private Bootstrap bootstrap;
-//    private Thread sendDataThread;
+    //    private Thread sendDataThread;
     public static final int MAX_RETRY = 5;
 
     /**
      * 初始化客户端
+     *
      * @throws InterruptedException
      */
     public void init() throws InterruptedException {
@@ -51,6 +52,7 @@ public class NettyClient {
                     @Override
                     protected void initChannel(SocketChannel ch) {
                         ch.pipeline().addLast(new IdleStateHandler(0, 0, 5));
+                        ch.pipeline().addLast(new MyProtocolDecoder());   // 自定义netty的拆包粘包。使用基于长度域拆包器 LengthFieldBasedFrameDecoder 来拆解我们的自定义协议（第一个参数指的是数据包的最大长度，第二个参数指的是长度域的偏移量，第三个参数指的是长度域的长度）
                         ch.pipeline().addLast(new PacketDecoder());
                         ch.pipeline().addLast(new LoginResponseHandler());
                         ch.pipeline().addLast(new MessageResponseHandler());
@@ -65,6 +67,7 @@ public class NettyClient {
 
     /**
      * 持续向服务端发送数据
+     *
      * @throws InterruptedException
      */
     public void sendLoopData() throws InterruptedException {
@@ -78,6 +81,7 @@ public class NettyClient {
 
     /**
      * 向服务端发出数据
+     *
      * @throws InterruptedException
      */
     public void sendData() {
@@ -88,6 +92,7 @@ public class NettyClient {
 
     /**
      * 建立连接并实现断线重连. (通常情况下，连接建立失败不会立即重新连接，而是会通过一个指数退避的方式，比如每隔 1 秒、2 秒、4 秒、8 秒，以 2 的幂次来建立连接，然后到达一定次数之后就放弃连接，接下来我们就来实现一下这段逻辑，我们默认重试 5 次)
+     *
      * @param retry 断线重连次数
      * @throws InterruptedException
      */
@@ -96,7 +101,7 @@ public class NettyClient {
             return;
         }
 
-        ChannelFuture future = bootstrap.connect("127.0.0.1", 1000);
+        ChannelFuture future = bootstrap.connect("127.0.0.1", 8600);
         future.addListener(new ChannelFutureListener() {
             @Override
             public void operationComplete(ChannelFuture channelFuture) throws Exception {
@@ -116,7 +121,7 @@ public class NettyClient {
                     // 本次重连的间隔。指数递增
                     int delay = 1 << order;
                     System.err.println(new Date() + ": 连接失败，第" + order + "次重连……");
-                    System.out.println("本次重连的间隔: " + delay +"s");
+                    System.out.println("本次重连的间隔: " + delay + "s");
                     bootstrap.config().group().schedule(() -> {
                         try {
                             doConnect(retry - 1);
@@ -143,22 +148,40 @@ public class NettyClient {
 
     /**
      * 启动控制台线程
+     *
      * @param channel
      */
     private static void startConsoleThread(Channel channel) {
+        Scanner sc = new Scanner(System.in);
+        LoginRequestPacket loginRequestPacket = new LoginRequestPacket();
+
         new Thread(() -> {
             while (!Thread.interrupted()) {
-                if (LoginUtil.hasLogin(channel)) {
-                    System.out.println("输入消息发送至服务端: ");
-                    Scanner sc = new Scanner(System.in);
-                    String line = sc.nextLine();
+                if (!SessionUtil.hasLogin(channel)) {
+//                if (LoginUtil.hasLogin(channel)) {
+                    System.out.println("输入用户名登录: ");
+                    String username = sc.nextLine();
+                    loginRequestPacket.setUserName(username);
 //                    MessageRequestPacket packet = new MessageRequestPacket();
 //                    packet.setMessage(line);
 //                    ByteBuf byteBuf = PacketCodeC.getInstance().encode(channel.alloc(), packet);
-                    channel.writeAndFlush(new MessageRequestPacket(line));
+                    channel.writeAndFlush(loginRequestPacket);
+                    waitForLoginResponse();
+                } else {
+                    System.out.println("请输入[用户id + ' ' + 消息] 发送给对方消息");
+                    String toUserId = sc.next();
+                    String message = sc.next();
+                    channel.writeAndFlush(new MessageToUserRequestPacket(toUserId, message));
                 }
             }
         }).start();
+    }
+
+    private static void waitForLoginResponse() {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException ignored) {
+        }
     }
 
     public static void main(String[] args) throws InterruptedException {
