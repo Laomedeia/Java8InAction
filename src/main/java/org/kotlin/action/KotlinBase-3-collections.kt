@@ -1,17 +1,8 @@
 @file:JvmName("RenameKtFileClass")   //重命名生成的类名
 package org.kotlin.action
 
-import autoshortidlib.EncoderHandler
-import autoshortidlib.NanoIdUtils
-import autoshortidlib.ShareCodeUtil
-import autoshortidlib.ShareCodeUtil2
-import java.security.MessageDigest
+import WorkTest.randomShortId.ShareCodeUtil2
 import java.security.SecureRandom
-import java.util.*
-import kotlin.collections.HashMap
-import java.text.SimpleDateFormat
-
-
 
 
 /**

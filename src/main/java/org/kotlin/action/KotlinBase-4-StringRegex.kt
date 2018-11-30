@@ -1,15 +1,5 @@
 package org.kotlin.action
 
-import autoshortidlib.EncoderHandler
-import autoshortidlib.NanoIdUtils
-import autoshortidlib.ShareCodeUtil
-import autoshortidlib.ShareCodeUtil2
-import java.security.MessageDigest
-import java.security.SecureRandom
-import java.util.*
-import kotlin.collections.HashMap
-import java.text.SimpleDateFormat
-
 /**
  * 字符串/正则式处理
  */

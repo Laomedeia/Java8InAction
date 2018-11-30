@@ -6,7 +6,7 @@ This repository contains all the source code for the examples and quizzes in the
 
 You can purchase the book here: [http://manning.com/urma/](http://manning.com/urma/) or on Amazon
 
-The source code for all examples can be found in the directory [src/main/java/lambdasinaction](https://github.com/java8/Java8InAction/tree/master/src/main/java/lambdasinaction)
+The source code for all examples can be found in the directory [src/main/java/java8InAction](https://github.com/java8/Java8InAction/tree/master/src/main/java/lambdasinaction)
 
 * Chapter 1: Java 8: why should you care?
 * Chapter 2: Passing code with behavior parameterization
@@ -49,7 +49,7 @@ $ mvn compile
 
 $ cd target/classes
 
-$ java lambdasinaction/chap1/FilteringApples
+$ java java8InAction/chap1/FilteringApples
 
 
 Alternatively you can compile the files manually inside the directory src/main/java
