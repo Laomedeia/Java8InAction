@@ -11,7 +11,7 @@ public class SimpleIntervalTest {
         int count = 0;
         for(;;) {
             count += 1;
-            // 每隔64次count, sleep 5 秒
+            // 每隔64次count, sleep 5秒
             if((count & 0x3f) == 0) {
                 Thread.sleep(5000);
             }
