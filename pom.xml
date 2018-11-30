@@ -47,7 +47,7 @@
           <version>${kotlin.version}</version>
           <scope>test</scope>
       </dependency>
-      <!-- commons-io -->
+      <!-- commons-bio -->
       <dependency>
           <groupId>commons-io</groupId>
           <artifactId>commons-io</artifactId>

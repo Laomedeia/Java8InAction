@@ -3,7 +3,7 @@ package juejin.netty.netty;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
-import juejin.netty.netty.protocol.*;
+import juejin.netty.netty.protocol.packet.request.LoginRequestPacket;
 
 import java.nio.charset.Charset;
 import java.util.Date;

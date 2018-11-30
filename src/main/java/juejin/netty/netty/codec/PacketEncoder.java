@@ -3,8 +3,7 @@ package juejin.netty.netty.codec;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToByteEncoder;
-import juejin.netty.netty.protocol.Packet;
-import juejin.netty.netty.protocol.PacketCodeC;
+import juejin.netty.netty.protocol.packet.Packet;
 
 /**
  * 编码message对象成二进制

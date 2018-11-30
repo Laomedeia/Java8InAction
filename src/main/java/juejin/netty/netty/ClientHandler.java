@@ -3,12 +3,14 @@ package juejin.netty.netty;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
-import juejin.netty.netty.protocol.*;
-import juejin.netty.netty.serialize.impl.JSONSerializer;
+import juejin.netty.netty.client.NettyClient;
+import juejin.netty.netty.codec.PacketCodeC;
+import juejin.netty.netty.protocol.packet.response.LoginResponsePacket;
+import juejin.netty.netty.protocol.packet.response.MessageResponsePacket;
+import juejin.netty.netty.protocol.packet.Packet;
 
 import java.nio.charset.Charset;
 import java.util.Date;
-import java.util.UUID;
 
 /**
  * @author neptune
