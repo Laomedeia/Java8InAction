@@ -1,4 +1,4 @@
-package WorkTest.randomShortId;
+package workTest.randomShortId;
 
 import java.math.BigDecimal;
 import java.util.Random;

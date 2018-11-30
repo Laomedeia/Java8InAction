@@ -1,4 +1,4 @@
-package WorkTest.randomShortId.shortid;
+package workTest.randomShortId.shortid;
 
 class RandomFromSeed {
 

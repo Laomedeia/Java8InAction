@@ -21,7 +21,7 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package WorkTest.randomShortId;
+package workTest.randomShortId;
 
 import java.security.SecureRandom;
 import java.util.Random;

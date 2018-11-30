@@ -1,4 +1,4 @@
-package WorkTest.randomShortId;
+package workTest.randomShortId;
 
 /**
  * 

@@ -1,4 +1,4 @@
-package WorkTest.randomShortId;
+package workTest.randomShortId;
 
 import java.util.Random;
 import java.util.zip.CRC32;

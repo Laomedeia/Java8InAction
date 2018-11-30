@@ -1,4 +1,4 @@
-package WorkTest.randomShortId.shortid;
+package workTest.randomShortId.shortid;
 
 import java.util.function.Function;
 

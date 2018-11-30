@@ -1,7 +1,7 @@
 @file:JvmName("RenameKtFileClass")   //重命名生成的类名
 package org.kotlin.action
 
-import WorkTest.randomShortId.ShareCodeUtil2
+import workTest.randomShortId.ShareCodeUtil2
 import java.security.SecureRandom
 
 
