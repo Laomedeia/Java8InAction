@@ -28,7 +28,7 @@ public class NettyClient {
     private Channel channel;
     private Bootstrap bootstrap;
     //    private Thread sendDataThread;
-    public static final int MAX_RETRY = 5;
+    public static final int MAX_RETRY = 5;  // 客户端最大重连次数
 
     /**
      * 初始化客户端
