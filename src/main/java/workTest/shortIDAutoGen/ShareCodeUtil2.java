@@ -1,4 +1,4 @@
-package workTest.randomShortId;
+package workTest.shortIDAutoGen;
 
 import java.math.BigDecimal;
 import java.util.Random;

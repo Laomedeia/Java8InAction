@@ -21,13 +21,14 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package workTest.randomShortId;
+package workTest.shortIDAutoGen;
 
 import java.security.SecureRandom;
 import java.util.Random;
 
 /**
  * A class for generating unique String IDs.
+ * 碰撞几率检测：https://zelark.github.io/nano-id-cc/
  *
  * The implementations of the core logic in this class are based on NanoId, a JavaScript
  * library by Andrey Sitnik released under the MIT license. (https://github.com/ai/nanoid)
@@ -35,6 +36,11 @@ import java.util.Random;
  * @author David Klebanoff
  */
 public final class NanoIdUtils {
+
+    public static void main(String[] args) {
+        String nanoId = NanoIdUtils.randomNanoId();
+        System.out.println(nanoId);
+    }
 
     /**
      * <code>NanoIdUtils</code> instances should NOT be constructed in standard programming.

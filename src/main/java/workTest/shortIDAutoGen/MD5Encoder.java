@@ -1,4 +1,4 @@
-package workTest.randomShortId;
+package workTest.shortIDAutoGen;
 
 
 import java.security.MessageDigest;
@@ -10,7 +10,7 @@ import java.security.MessageDigest;
  * @author Michael
  *
  */
-public class EncoderHandler {
+public class MD5Encoder {
 
     private static final String ALGORITHM = "MD5";
 
@@ -78,11 +78,11 @@ public class EncoderHandler {
 
     public static void main(String[] args) {
         System.out.println("111111 MD5  :"
-                + EncoderHandler.encodeByMD5("111111"));
+                + MD5Encoder.encodeByMD5("111111"));
         System.out.println("111111 MD5  :"
-                + EncoderHandler.encode("MD5", "111111"));
+                + MD5Encoder.encode("MD5", "111111"));
         System.out.println("SHA1 :"
-                + EncoderHandler.encode("SHA1", String.valueOf(System.currentTimeMillis())));
+                + MD5Encoder.encode("SHA1", String.valueOf(System.currentTimeMillis())));
     }
 
 }

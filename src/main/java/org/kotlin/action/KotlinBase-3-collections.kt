@@ -1,7 +1,7 @@
 @file:JvmName("RenameKtFileClass")   //重命名生成的类名
 package org.kotlin.action
 
-import workTest.randomShortId.ShareCodeUtil2
+import workTest.shortIDAutoGen.ShareCodeUtil2
 import java.security.SecureRandom
 
 
@@ -43,7 +43,7 @@ fun testLoopShortids() {
     for (i in 1..10000000) {
 //        var randomNanoId = NanoIdUtils.randomNanoId(random, alphabet, size)
 //        var randomNanoId = ShareCodeUtil.idToCode(i.toLong(), 33554432L)
-//        var randomNanoId = EncoderHandler.encode("SHA1", time).substring(0,6)
+//        var randomNanoId = MD5Encoder.encode("SHA1", time).substring(0,6)
         var randomNanoId = ShareCodeUtil2.toSerialCode(i.toLong())
 //        println(randomNanoId)
         set.add(randomNanoId)

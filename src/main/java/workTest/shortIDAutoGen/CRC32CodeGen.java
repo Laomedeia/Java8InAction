@@ -1,4 +1,4 @@
-package workTest.randomShortId;
+package workTest.shortIDAutoGen;
 
 import java.util.Random;
 import java.util.zip.CRC32;
@@ -7,7 +7,7 @@ import java.util.zip.CRC32;
  * 
  * @author eaves.zhu
  */
-public class DeviceIdUtil {
+public class CRC32CodeGen {
 /**
  * @author eaves.zhu
  * @param deviceId
@@ -25,7 +25,7 @@ public class DeviceIdUtil {
 		Random rd = new Random();
 		String randomStr = "randomStr:" + ( 10 + rd.nextInt(10) ) ;
 		System.out.println(randomStr);
-		System.out.println(DeviceIdUtil.getCRC32(randomStr));
+		System.out.println(CRC32CodeGen.getCRC32(randomStr));
 	}
 
 }
