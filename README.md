@@ -1,13 +1,14 @@
 
 Java8-Kotlin-InAction
 ===============
+个人的 Java & Kotlin 的练习和测试项目
 
-This repository contains all the source code for the examples and quizzes in the book Java 8 in Action: Lambdas, Streams and functional-style programming.
+###  源码包结构说明:
+#### com.winterbe.java8
+来自 http://winterbe.com 网站作者的 java8 guide 项目
 
-You can purchase the book here: [http://manning.com/urma/](http://manning.com/urma/) or on Amazon
-
-The source code for all examples can be found in the directory [src/main/java/java8InAction](https://github.com/java8/Java8InAction/tree/master/src/main/java/lambdasinaction)
-
+#### java8InAction
+来自《java8 实战》书中的源码练习
 * Chapter 1: Java 8: why should you care?
 * Chapter 2: Passing code with behavior parameterization
 * Chapter 3: Lambda expressions
@@ -28,33 +29,16 @@ The source code for all examples can be found in the directory [src/main/java/ja
 * Appendix B: Miscellaneous library updates
 * Appendix C: Performing multiple operations in parallel on a Stream
 * Appendix D: Lambdas and JVM bytecode
-We will update the repository as we update the book. Stay tuned!
 
-### Make sure to have JDK8 installed
-The latest binary can be found here: http://www.oracle.com/technetwork/java/javase/overview/java8-2100321.html
+#### juejin
+来自掘金小册的练习项目
+- netty 练习
 
-$ java -version
+#### org.kotlin.action
+来自《kotlin 实战》书中的练习
 
-java version "1.8.0_05"
-Java(TM) SE Runtime Environment (build 1.8.0_05-b13)
-Java HotSpot(TM) 64-Bit Server VM (build 25.5-b02, mixed mode)
+#### workTest
+来自工作中的一些临时测试练习
 
-
-You can download a preview version here: https://jdk8.java.net/
-
-### Compile/Run the examples
-Using maven:
-
-$ mvn compile
-
-$ cd target/classes
-
-$ java java8InAction/chap1/FilteringApples
-
-
-Alternatively you can compile the files manually inside the directory src/main/java
-
-You can also import the project in your favorite IDE:
-    * In IntelliJ use "File->Open" menu and navigate to the folder where the project resides
-    * In Eclipse use "File->Import->Existing Maven Projects" (also modify "Reduntant super interfaces" to report as Warnings instead of Errors
-    * In Netbeans use "File->Open Project" menu
+#### leetcode
+偶尔刷刷
