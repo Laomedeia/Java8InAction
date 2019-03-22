@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.stream.*;
 
 
-public class StreamVsCollection {
+public class  StreamVsCollection {
 
     public static void main(String...args){
         List<String> names = Arrays.asList("Java8", "Lambdas", "In", "Action");
