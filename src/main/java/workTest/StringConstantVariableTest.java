@@ -1,5 +1,7 @@
 package workTest;
 
+import java.util.List;
+
 /**
  * 字符量常量，变量及字面量测试
  * @author neptune
@@ -17,11 +19,15 @@ public class StringConstantVariableTest {
 
 
         String a = new String("a");
-        s1.intern();    // s1 = s1.intern() 则会返回 true.因为 intern 取回了常量池的"a"
+        a.intern();    // a = a.intern() 则会返回 true.因为 intern 取回了常量池的"a"
         String a1 = "a";
         System.out.println(a == a1);
         System.out.println(System.identityHashCode(a)); //打印变量地址
         System.out.println(System.identityHashCode(a1)); //打印变量地址
 
+        List list = null;
+        list.stream().forEach(e -> {
+            System.out.println(e);
+        });
     }
 }
