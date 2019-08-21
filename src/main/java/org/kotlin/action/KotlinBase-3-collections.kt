@@ -17,7 +17,7 @@ val newHashMap = hashMapOf(1 to "ONE", 2 to "TWO", "s1" to "THREE")
 // 静态final常量
 const val UNIX_LINE_SEPARATOR = "\n"
 // 中缀调用
-infix fun Any.to(other:Any) = Pair(this, other)
+//infix fun Any.to(other:Any): Pair<Int, String> = Pair(this, other)
 val numberName = 1 to "hello"
 
 // 扩展函数
