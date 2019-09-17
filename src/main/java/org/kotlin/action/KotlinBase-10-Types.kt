@@ -38,7 +38,7 @@ fun <T> printHashcode(t: T) {
 fun main(args: Array<String>) {
     printAllCaps("s.milinkovic")
     printAllCaps(null)
-
+    
     val employee = Employee("Correa", null)
     println(employee.countryName())
 
@@ -51,7 +51,7 @@ fun main(args: Array<String>) {
     email = null
     email?.let { sendEmailTo(it) }  // 什么都不会发生
 
-    // 4. 扩展函数
+    // 4. 可空类型扩展函数
     if ("".isNullOrEmpty() ) println("hello i am empty")
     if (null.isNullOrBlank()) println("hello i am null, but will not throw error")
 
