@@ -3,6 +3,7 @@ package leetcode.a1114_printInOrder;
 import java.util.concurrent.CountDownLatch;
 
 /**
+ * 多线程按序打印
  * @author neptune
  * @create 2020 03 26 11:45 上午
  */

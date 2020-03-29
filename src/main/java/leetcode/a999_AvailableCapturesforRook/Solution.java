@@ -1,6 +1,7 @@
 package leetcode.a999_AvailableCapturesforRook;
 
 /**
+ * 可以被一步捕获的棋子数
  * @author neptune
  * @create 2020 03 26 3:31 下午
  */
