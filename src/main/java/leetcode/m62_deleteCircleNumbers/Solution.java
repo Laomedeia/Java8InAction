@@ -30,7 +30,12 @@ public class Solution {
         return list.get(0);
     }
 
-
+    /**
+     * 约瑟夫环数学解法解
+     * @param n
+     * @param m
+     * @return
+     */
     public int lastRemaining2(int n, int m) {
         int ans = 0;
         // 最后一轮剩下2个人，所以从2开始反推
