@@ -5,10 +5,10 @@ package leetcode.a2_add_two_numbers;
  * @create 2019 01 05 18:54
  */
 public class ListNode {
-    int val;
-    ListNode next;
+    public int val;
+    public ListNode next;
 
-    ListNode(int x) {
+    public ListNode(int x) {
         val = x;
     }
 
