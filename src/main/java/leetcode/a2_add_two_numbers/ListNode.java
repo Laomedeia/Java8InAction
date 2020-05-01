@@ -16,4 +16,5 @@ public class ListNode {
         next = newNextNode;
         return next;
     }
+
 }

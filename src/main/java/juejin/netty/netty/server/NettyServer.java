@@ -6,6 +6,7 @@ import io.netty.channel.ChannelOption;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.handler.codec.http.HttpServerCodec;
 import io.netty.util.concurrent.Future;
 import io.netty.util.concurrent.GenericFutureListener;
 import juejin.netty.netty.codec.MyProtocolDecoder;
@@ -55,6 +56,10 @@ public class NettyServer {
                 .childHandler(new ChannelInitializer<NioSocketChannel>() {
                     @Override
                     protected void initChannel(NioSocketChannel ch) {
+                        // 管道添加Handler, HttpServerCodec 是 netty 自己提供的Http解码助手类
+                        ch.pipeline().addLast("HttpServerCodec", new HttpServerCodec());
+                        ch.pipeline().addLast("customHttpHandler", new CustomHttpHandler());
+
 //                        ch.pipeline().addLast(new LifeCyCleTestHandler());    // channelHandler 生命周期演示
 //                        ch.pipeline().addLast(new IdleStateHandler(10, 0, 0));
                         ch.pipeline().addLast(new IMIdleStateHandler());
