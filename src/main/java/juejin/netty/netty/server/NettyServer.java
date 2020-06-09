@@ -53,6 +53,7 @@ public class NettyServer {
                 .childOption(ChannelOption.SO_KEEPALIVE, true)
                 // TCP_NODELAY表示是否开启Nagle算法，true表示关闭，false表示开启，通俗地说，如果要求高实时性，有数据发送时就马上发送，就关闭，如果需要减少发送次数减少网络交互，就开启。)
                 .childOption(ChannelOption.TCP_NODELAY, true)
+                // 定义子处理器，用于处理 workerGroup
                 .childHandler(new ChannelInitializer<NioSocketChannel>() {
                     @Override
                     protected void initChannel(NioSocketChannel ch) {

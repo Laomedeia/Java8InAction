@@ -14,7 +14,7 @@ public class FibonacciTest {
 //                .limit(count).forEach(p->System.out.println(p[0]));
         Stream.iterate(new BigInteger[]{ BigInteger.ONE, BigInteger.ONE },
                 p->new BigInteger[]{ p[1], p[0].add(p[1]) })
-                .limit(92).forEach(p->System.out.println(p[0]));
+                .limit(count).forEach(p->System.out.println(p[0]));
     }
 
     public static void main(String[] args) {
