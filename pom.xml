@@ -102,6 +102,19 @@
           <artifactId>netty-all</artifactId>
           <version>4.1.6.Final</version>
       </dependency>
+      <!-- spring-core -->
+      <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-core</artifactId>
+          <version>5.2.8.RELEASE</version>
+      </dependency>
+      <!-- spring-context -->
+      <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-context</artifactId>
+          <version>5.2.8.RELEASE</version>
+      </dependency>
+
   </dependencies>
 
   <build>
