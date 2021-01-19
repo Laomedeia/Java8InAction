@@ -1,13 +1,5 @@
 package leetcode.a486_PredictTheWinner_MID;
 
-import com.google.common.collect.Lists;
-import com.google.common.primitives.Ints;
-import sun.jvm.hotspot.utilities.IntArray;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 /**
  * 预测赢家
@@ -63,7 +55,6 @@ public class Solution {
      * 递归
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/predict-the-winner/solution/yu-ce-ying-jia-by-leetcode-solution/
-     * @param nums
      * @return
      */
 //    public boolean PredictTheWinner(int[] nums) {

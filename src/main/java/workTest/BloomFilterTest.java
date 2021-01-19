@@ -2,8 +2,10 @@ package workTest;
 
 import com.google.common.hash.BloomFilter;
 import com.google.common.hash.Funnels;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * @author neptune
@@ -21,10 +23,10 @@ public class BloomFilterTest {
         for (int i = 0; i < 10000000; i++) {
             filter.put(i);
         }
-        Assert.assertTrue(filter.mightContain(1));
-        Assert.assertTrue(filter.mightContain(2));
-        Assert.assertTrue(filter.mightContain(3));
-        Assert.assertFalse(filter.mightContain(10000000));
+        assertTrue(filter.mightContain(1));
+        assertTrue(filter.mightContain(2));
+        assertTrue(filter.mightContain(3));
+        assertFalse(filter.mightContain(10000000));
         long end = System.currentTimeMillis();
         System.out.println("执行时间：" + (end - star));
     }

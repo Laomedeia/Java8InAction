@@ -1,11 +1,12 @@
 package concurrent;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ThreadLocalRandom;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * corePoolSize vs. maxPoolSize demo
@@ -61,7 +62,7 @@ public class SpringThreadPoolTaskExecutorDemo {
         this.startThreads(taskExecutor, countDownLatch, 10);
 
         while (countDownLatch.getCount() > 0) {
-            Assert.assertEquals(1, taskExecutor.getPoolSize());
+            assertEquals(1, taskExecutor.getPoolSize());
         }
     }
 
@@ -76,7 +77,7 @@ public class SpringThreadPoolTaskExecutorDemo {
         this.startThreads(taskExecutor, countDownLatch, 10);
 
         while (countDownLatch.getCount() > 0) {
-            Assert.assertEquals(5, taskExecutor.getPoolSize());
+            assertEquals(5, taskExecutor.getPoolSize());
         }
     }
 
@@ -93,7 +94,7 @@ public class SpringThreadPoolTaskExecutorDemo {
         this.startThreads(taskExecutor, countDownLatch, 11);
 
         while (countDownLatch.getCount() > 0) {
-            Assert.assertEquals(5, taskExecutor.getPoolSize());
+            assertEquals(5, taskExecutor.getPoolSize());
         }
     }
 
@@ -109,7 +110,7 @@ public class SpringThreadPoolTaskExecutorDemo {
         this.startThreads(taskExecutor, countDownLatch, 20);
 
         while (countDownLatch.getCount() > 0) {
-            Assert.assertEquals(10, taskExecutor.getPoolSize());
+            assertEquals(10, taskExecutor.getPoolSize());
         }
     }
 }

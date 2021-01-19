@@ -1,11 +1,11 @@
 package java8InAction.chap10;
 
-import org.junit.*;
+import org.junit.jupiter.api.Test;
 
 import java.util.*;
 
 import static java.util.Optional.*;
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ReadPositiveIntParam {
 
